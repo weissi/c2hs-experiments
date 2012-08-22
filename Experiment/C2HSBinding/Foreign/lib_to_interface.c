@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "lib_to_interface.h"
 
@@ -30,6 +31,8 @@ LTIData lti_new_data(int n) {
         }
     }
 
+    printf("allocated %p\n", data);
+
     return data;
 }
 
@@ -47,6 +50,7 @@ int lti_get_element(LTIData data, int n) {
 }
 
 void lti_free_data(LTIData data) {
+    printf("freeing %p\n", data);
     LTIDataInternal *d = (LTIDataInternal *)data;
     for (int i=0; i<lti_element_count(data); i++) {
         free(d->data[i]);

@@ -1,11 +1,11 @@
 module Experiment.C2HSBinding.HsLTIHighlevel where
 
-{- Unmanaged Version -}
-import Experiment.C2HSBinding.Foreign.HsLTI
+-- {- Unmanaged Version -}
+-- import Experiment.C2HSBinding.Foreign.HsLTI
 
--- {- Managed Version (broken!!!) -}
--- (PLEASE CHANGE c2hs-experiments.cabal accordingly)
--- import Experiment.C2HSBinding.Foreign.HsLTIManaged
+-- -- {- Managed Version -}
+-- -- (PLEASE CHANGE c2hs-experiments.cabal accordingly)
+import Experiment.C2HSBinding.Foreign.HsLTIManaged
 
 ltiEnum :: Int -> [Int]
 ltiEnum n =
