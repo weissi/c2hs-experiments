@@ -16,7 +16,11 @@ build-type:          Simple
 cabal-version:       >=1.8
 
 library
+  -- Unmanaged Version (works)
   exposed-modules:     Experiment.C2HSBinding.Foreign.HsLTI
+  -- -- Managed Version (broken!!!)
+  -- -- (PLEASE CHANGE Experiment/C2HSBinding/HsLTIHighlevel.hs accordingly)
+  -- -- exposed-modules:     Experiment.C2HSBinding.Foreign.HsLTIManaged
   build-depends:       base ==4.5.*
   build-tools:         c2hs -any
   include-dirs:        Experiment/C2HSBinding/Foreign/
