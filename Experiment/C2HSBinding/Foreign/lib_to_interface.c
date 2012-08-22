@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "lib_to_interface.h"
 
@@ -31,7 +32,7 @@ LTIData lti_new_data(int n) {
         }
     }
 
-    printf("allocated %p\n", data);
+    printf("allocated %p\n", (void *)data);
 
     return data;
 }
@@ -50,10 +51,26 @@ int lti_get_element(LTIData data, int n) {
 }
 
 void lti_free_data(LTIData data) {
-    printf("freeing %p\n", data);
+    printf("freeing %p\n", (void *)data);
     LTIDataInternal *d = (LTIDataInternal *)data;
     for (int i=0; i<lti_element_count(data); i++) {
         free(d->data[i]);
     }
+    free(d->data);
     free(d);
+}
+
+char *lti_version_information(const char *banner) {
+    char VERSION[] = "LIB TO INTERFACE v0.2";
+    const size_t ver_ret_len = sizeof(VERSION) + strlen(banner);
+    char *ver_ret = (char *)malloc(ver_ret_len);
+
+    assert(NULL != ver_ret);
+    memset(ver_ret, 0, ver_ret_len);
+    memcpy(ver_ret,                  banner, strlen(banner));
+    memcpy(ver_ret + strlen(banner), VERSION, sizeof(VERSION));
+
+    printf("allocated string %p\n", ver_ret);
+
+    return ver_ret;
 }

@@ -14,3 +14,10 @@ main =
           then putStrLn "That would eat up too much memory"
           else do let ltiCounts = map ltiEnum counts
                   mapM_ print ltiCounts
+                  strs <- mapM getStrings counts
+                  let strLens = map length $ concat strs
+                      allLen = sum strLens
+                  putStrLn $ "Overall String length: " ++ show allLen
+   where getStrings :: Int -> IO [String]
+         getStrings n = do let vs = map ltiVersion $ map show [0..n]
+                           return vs

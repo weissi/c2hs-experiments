@@ -25,7 +25,7 @@ library
   build-tools:         c2hs -any
   include-dirs:        Experiment/C2HSBinding/Foreign/
   C-Sources:           Experiment/C2HSBinding/Foreign/lib_to_interface.c
-  CC-Options:          -Wall -pedantic -std=c99
+  CC-Options:          -Wall -pedantic -std=c99 -ggdb
   GHC-Options:         -Wall
 
 executable TestHsLTI
